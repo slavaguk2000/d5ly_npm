@@ -1,8 +1,9 @@
 {
   "name": "d5ly",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "description": "Deflate compression library based WebAssembly",
   "main": "index.js",
+  "repository": "https://github.com/slavaguk2000/d5ly_npm",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
