@@ -3,7 +3,7 @@
 
 ## Usage 
 
-With [npm](https://npmjs.org/) installed, run
+With [npm](https://npmjs.org/) installed, run:
 
     $ npm install d5ly
 
