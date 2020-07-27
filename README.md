@@ -12,6 +12,10 @@ Then use:
 ```javascript
 d5ly = require('d5ly');
 sourceArray = new Uint8Array(100000);
-compressedArray = d5ly.compress(sourceArray);
-decompressedArray = d5ly.decompress(compressedArray);
+deflateCompressedArray = d5ly.deflate_compress(sourceArray);
+deflateDecompressedArray = d5ly.deflate_decompress(deflateDecompressedArray);
+zlibCompressedArray = d5ly.zlib_compress(sourceArray);
+zlibDecompressedArray = d5ly.zlib_decompress(zlibCompressedArray);
+gzipCompressedArray = d5ly.gzip_compress(sourceArray);
+gzipDecompressedArray = d5ly.gzip_decompress(gzipCompressedArray);
 ```

@@ -16,19 +16,19 @@ function getInt32(uint8Pointer){
 	return d5ly_.HEAPU32[Math.ceil(uint8Pointer/4)]
 }
 
-function compress(sourceArray) {
-  var len = sourceArray.length;
+function compress(sourceArray, compressMethod) {
+	var len = sourceArray.length;
 	var sourcePointer = passArrayToWasm(sourceArray, len * 2);
-	var compressedSize = d5ly_._compress(sourcePointer, len);
+	var compressedSize = compressMethod(sourcePointer, len);
 	var compressedArray = getArrayFromWasm(sourcePointer+len, compressedSize).slice();
 	d5ly_._free(sourcePointer)
 	return compressedArray;
 }
 
-function decompress(compressedArray) {
+function decompress(compressedArray, decompressMethod) {
 	var len = compressedArray.length;
 	var compressedArrayPointer = passArrayToWasm(compressedArray, len + 7);
-	var decompressedSize = d5ly_._decompress(compressedArrayPointer, len);
+	var decompressedSize = decompressMethod(compressedArrayPointer, len);
 	decompressedArrayPointer = getInt32(compressedArrayPointer + len)
 	var decompressedArray = getArrayFromWasm(decompressedArrayPointer, decompressedSize).slice();
 	d5ly_._free(compressedArrayPointer)
@@ -36,9 +36,37 @@ function decompress(compressedArray) {
 	return decompressedArray;
 }
 
+function deflate_compress(sourceArray) {
+	return compress(sourceArray, d5ly_._deflate_compress);
+}
+  
+function deflate_decompress(compressedArray) {
+	return decompress(compressedArray, d5ly_._deflate_decompress);
+}
+
+function zlib_compress(sourceArray) {
+	return compress(sourceArray, d5ly_._zlib_compress);
+}
+  
+function zlib_decompress(compressedArray) {
+	return decompress(compressedArray, d5ly_._zlib_decompress);
+}
+
+function gzip_compress(sourceArray) {
+	return compress(sourceArray, d5ly_._gzip_compress);
+}
+  
+function gzip_decompress(compressedArray) {
+	return decompress(compressedArray, d5ly_._gzip_decompress);
+}
+
 d5ly_['onRuntimeInitialized'] = function() {
-	exports.compress = compress;
-	exports.decompress = decompress;
+	exports.deflate_compress = deflate_compress;
+	exports.deflate_decompress = deflate_decompress;
+	exports.zlib_compress = zlib_compress;
+	exports.zlib_decompress = zlib_decompress;
+	exports.gzip_compress = gzip_compress;
+	exports.gzip_decompress = gzip_decompress;
 }
 
 
