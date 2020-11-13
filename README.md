@@ -10,13 +10,27 @@ With [npm](https://npmjs.org/) installed, run:
 Then use:
 
 ```javascript
-d5ly = require('d5ly');
-sourceArray = new Uint8Array(100000);
-deflateCompressedArray = d5ly.deflate_compress(sourceArray);
-deflateDecompressedArray = d5ly.deflate_decompress(deflateDecompressedArray);
-zlibCompressedArray = d5ly.zlib_compress(sourceArray);
-zlibDecompressedArray = d5ly.zlib_decompress(zlibCompressedArray);
-gzipCompressedArray = d5ly.gzip_compress(sourceArray);
-gzipDecompressedArray = d5ly.gzip_decompress(gzipCompressedArray);
+import d5ly from 'd5ly'
+
+d5ly.setup().then(
+    (instance)=> {
+      var sourceArray = new Uint8Array(1000000);
+      sourceArray[4] = 45;
+      sourceArray[9] = 32;
+      console.log(sourceArray);
+      var compressedArray = d5ly.deflateCompress(instance, sourceArray);
+      console.log(compressedArray);
+      var decompressedArray = d5ly.deflateDecompress(instance, compressedArray);
+      console.log(decompressedArray);
+      compressedArray = d5ly.zlibCompress(instance, sourceArray);
+      console.log(compressedArray);
+      decompressedArray = d5ly.zlibDecompress(instance, compressedArray);
+      console.log(decompressedArray);
+      compressedArray = d5ly.gzipCompress(instance, sourceArray);
+      console.log(compressedArray);
+      decompressedArray = d5ly.gzipDecompress(instance, compressedArray);
+      console.log(decompressedArray);
+    }
+);
 ```
 

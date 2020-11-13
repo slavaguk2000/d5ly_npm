@@ -1,12 +1,12 @@
 d5ly = require('./d5ly')
 
-
 function passArrayToWasm(instance, array, size) {
     const ptr = instance._malloc(size);
 	if(!ptr) throw "Memory Error"
 	instance.HEAPU8.set(array, ptr);
 	return ptr;
 }
+
 function getArrayFromWasm(instance, ptr, len) {
 	return instance.HEAPU8.subarray(ptr, ptr + len);
 }
@@ -35,35 +35,35 @@ function decompress(instance, compressedArray, decompressMethod) {
 	return decompressedArray;
 }
 
-function deflate_compress(instance, sourceArray) {
+function deflateCompress(instance, sourceArray) {
 	return compress(instance, sourceArray, instance._deflate_compress);
 }
   
-function deflate_decompress(instance, compressedArray) {
+function deflateDecompress(instance, compressedArray) {
 	return decompress(instance, compressedArray, instance._deflate_decompress);
 }
 
-function zlib_compress(instance, sourceArray) {
+function zlibCompress(instance, sourceArray) {
 	return compress(instance, sourceArray, instance._zlib_compress);
 }
   
-function zlib_decompress(instance, compressedArray) {
+function zlibDecompress(instance, compressedArray) {
 	return decompress(instance, compressedArray, instance._zlib_decompress);
 }
 
-function gzip_compress(instance, sourceArray) {
+function gzipCompress(instance, sourceArray) {
 	return compress(instance, sourceArray, instance._gzip_compress);
 }
   
-function gzip_decompress(instance, compressedArray) {
+function gzipDecompress(instance, compressedArray) {
 	return decompress(instance, compressedArray, instance._gzip_decompress);
 }
 
-exports.d5ly = d5ly;
-exports.deflate_compress = deflate_compress;
-exports.deflate_decompress = deflate_decompress;
-exports.zlib_compress = zlib_compress;
-exports.zlib_decompress = zlib_decompress;
-exports.gzip_compress = gzip_compress;
-exports.gzip_decompress = gzip_decompress;
+exports.setup = d5ly;
+exports.deflateCompress = deflateCompress;
+exports.deflateDecompress = deflateDecompress;
+exports.zlibCompress = zlibCompress;
+exports.zlibDecompress = zlibDecompress;
+exports.gzipCompress = gzipCompress;
+exports.gzipDecompress = gzipDecompress;
 

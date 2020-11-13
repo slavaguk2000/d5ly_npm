@@ -1,12 +1,24 @@
 {
   "name": "d5ly",
-  "version": "1.0.7",
+  "version": "1.1.1",
   "description": "Deflate compression library based WebAssembly",
   "main": "index.js",
-  "repository": "https://github.com/slavaguk2000/d5ly_npm",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slavaguk2000/d5ly_npm.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "5ly",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slavaguk2000/d5ly_npm/issues"
+  },
+  "homepage": "https://github.com/slavaguk2000/d5ly_npm#readme",
+  "keywords": [
+    "deflate",
+    "zlib",
+    "gzip"
+  ]
 }
