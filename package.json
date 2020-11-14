@@ -1,6 +1,6 @@
 {
   "name": "d5ly",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Deflate compression library based WebAssembly",
   "main": "index.js",
   "repository": {
@@ -19,6 +19,12 @@
   "keywords": [
     "deflate",
     "zlib",
-    "gzip"
+    "gzip",
+    "wasm",
+    "fastest",
+    "compression",
+    "react",
+    "NodeJS",
+    "JavaScript"
   ]
 }

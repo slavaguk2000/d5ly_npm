@@ -43,3 +43,5 @@ d5ly.setup().then(
 );
 ```
 
+Speed test in compare with [pako](https://www.npmjs.com/package/pako) and [wasm-flate](https://www.npmjs.com/package/wasm-flate):
+![Test](/image/test.jpg)
