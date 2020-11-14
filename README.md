@@ -9,9 +9,18 @@ With [npm](https://npmjs.org/) installed, run:
 
 Then use:
 
+For React:
 ```javascript
 import d5ly from 'd5ly'
+```
 
+For NodeJS:
+```javascript
+d5ly = require('d5ly')
+```
+
+Then:
+```javascript
 d5ly.setup().then(
     (instance)=> {
       var sourceArray = new Uint8Array(1000000);

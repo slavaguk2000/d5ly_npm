@@ -1,6 +1,6 @@
 {
   "name": "d5ly",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Deflate compression library based WebAssembly",
   "main": "index.js",
   "repository": {
